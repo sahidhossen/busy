@@ -60,6 +60,7 @@ class SubFeed extends React.Component {
 
   componentDidMount() {
     const { authenticated, loaded, user, match, feed } = this.props;
+
     const category = match.params.category;
     let content = [];
 
@@ -67,6 +68,7 @@ class SubFeed extends React.Component {
 
     if (match.url === '/' && authenticated) {
       content = getUserFeedFromState(user.name, feed);
+
       if (_.isEmpty(content)) {
         this.props.getFeedContent('feed', user.name);
       }

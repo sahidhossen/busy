@@ -7,7 +7,7 @@ import { getFeedContent } from './feedActions';
 import { getIsLoaded, getIsAuthenticated } from '../reducers';
 import SubFeed from './SubFeed';
 import HeroBannerContainer from './HeroBannerContainer';
-import LeftSidebar from '../app/Sidebar/LeftSidebar';
+// import LeftSidebar from '../app/Sidebar/LeftSidebar';
 import RightSidebar from '../app/Sidebar/RightSidebar';
 import TopicSelector from '../components/TopicSelector';
 import TrendingTagsMenu from '../components/TrendingTagsMenu';
@@ -65,11 +65,11 @@ class Page extends React.Component {
         <HeroBannerContainer />
         <div className="shifted">
           <div className="feed-layout container">
-            <Affix className="leftContainer" stickPosition={77}>
-              <div className="left">
-                <LeftSidebar />
-              </div>
-            </Affix>
+            {/* <Affix className="leftContainer" stickPosition={77}> */}
+            {/* <div className="left"> */}
+            {/* <LeftSidebar /> */}
+            {/* </div> */}
+            {/* </Affix> */}
             <Affix className="rightContainer" stickPosition={77}>
               <div className="right">
                 <RightSidebar />

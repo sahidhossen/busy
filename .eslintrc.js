@@ -1,6 +1,6 @@
 const OFF = 0;
 const ERROR = 2;
-
+const ON = 1;
 module.exports = {
   parser: 'babel-eslint',
   parserOptions: {
@@ -23,7 +23,7 @@ module.exports = {
       ERROR,
       { devDependencies: ['**/__tests__/*.js', 'scripts/**/*.js', 'webpack/**/*.js'] },
     ],
-    'no-console': OFF,
+    'no-console': ON,
     'global-require': OFF,
   },
 };

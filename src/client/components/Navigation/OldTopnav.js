@@ -7,20 +7,20 @@ import { connect } from 'react-redux';
 import { Menu, Input, AutoComplete } from 'antd';
 import classNames from 'classnames';
 import { searchAutoComplete } from '../../search/searchActions';
-// import { getUpdatedSCUserMetadata } from '../../auth/authActions';
+import { getUpdatedSCUserMetadata } from '../../auth/authActions';
 import {
   getAutoCompleteSearchResults,
-  // getNotifications,
-  // getAuthenticatedUserSCMetaData,
-  // getIsLoadingNotifications,
+  getNotifications,
+  getAuthenticatedUserSCMetaData,
+  getIsLoadingNotifications,
 } from '../../reducers';
 import SteemConnect from '../../steemConnectAPI';
-// import { PARSED_NOTIFICATIONS } from '../../../common/constants/notifications';
+import { PARSED_NOTIFICATIONS } from '../../../common/constants/notifications';
 import BTooltip from '../BTooltip';
 import Avatar from '../Avatar';
 import PopoverMenu, { PopoverMenuItem } from '../PopoverMenu/PopoverMenu';
 import Popover from '../Popover';
-// import Notifications from './Notifications/Notifications';
+import Notifications from './Notifications/Notifications';
 import LanguageSettings from './LanguageSettings';
 import './Topnav.less';
 
@@ -29,13 +29,13 @@ import './Topnav.less';
 @connect(
   state => ({
     autoCompleteSearchResults: getAutoCompleteSearchResults(state),
-    // notifications: getNotifications(state),
-    // userSCMetaData: getAuthenticatedUserSCMetaData(state),
-    // loadingNotifications: getIsLoadingNotifications(state),
+    notifications: getNotifications(state),
+    userSCMetaData: getAuthenticatedUserSCMetaData(state),
+    loadingNotifications: getIsLoadingNotifications(state),
   }),
   {
     searchAutoComplete,
-    // getUpdatedSCUserMetadata,
+    getUpdatedSCUserMetadata,
   },
 )
 class Topnav extends React.Component {
@@ -45,21 +45,21 @@ class Topnav extends React.Component {
     location: PropTypes.shape().isRequired,
     history: PropTypes.shape().isRequired,
     username: PropTypes.string,
-    // notifications: PropTypes.arrayOf(PropTypes.shape()),
+    notifications: PropTypes.arrayOf(PropTypes.shape()),
     searchAutoComplete: PropTypes.func.isRequired,
-    // getUpdatedSCUserMetadata: PropTypes.func.isRequired,
+    getUpdatedSCUserMetadata: PropTypes.func.isRequired,
     onMenuItemClick: PropTypes.func,
-    // userSCMetaData: PropTypes.shape(),
-    // loadingNotifications: PropTypes.bool,
+    userSCMetaData: PropTypes.shape(),
+    loadingNotifications: PropTypes.bool,
   };
 
   static defaultProps = {
     autoCompleteSearchResults: [],
-    // notifications: [],
+    notifications: [],
     username: undefined,
     onMenuItemClick: () => {},
-    // userSCMetaData: {},
-    // loadingNotifications: false,
+    userSCMetaData: {},
+    loadingNotifications: false,
   };
 
   static handleScrollToTop() {
@@ -75,7 +75,7 @@ class Topnav extends React.Component {
       searchBarActive: false,
       popoverVisible: false,
       searchBarValue: '',
-      // notificationsPopoverVisible: false,
+      notificationsPopoverVisible: false,
     };
     this.handleMoreMenuSelect = this.handleMoreMenuSelect.bind(this);
     this.handleMoreMenuVisibleChange = this.handleMoreMenuVisibleChange.bind(this);
@@ -148,23 +148,21 @@ class Topnav extends React.Component {
   };
 
   menuForLoggedIn = () => {
-    // const { intl, username, notifications, userSCMetaData, loadingNotifications } = this.props;
-    const { intl, username } = this.props;
-    const { searchBarActive, popoverVisible } = this.state;
-    // const { searchBarActive, notificationsPopoverVisible, popoverVisible } = this.state;
-    // const lastSeenTimestamp = _.get(userSCMetaData, 'notifications_last_timestamp');
-    // const notificationsCount = _.isUndefined(lastSeenTimestamp)
-    //   ? _.size(notifications)
-    //   : _.size(
-    //       _.filter(
-    //         notifications,
-    //         notification =>
-    //           lastSeenTimestamp < notification.timestamp &&
-    //           _.includes(PARSED_NOTIFICATIONS, notification.type),
-    //       ),
-    //     );
-    // const displayBadge = notificationsCount > 0;
-    // const notificationsCountDisplay = notificationsCount > 99 ? '99+' : notificationsCount;
+    const { intl, username, notifications, userSCMetaData, loadingNotifications } = this.props;
+    const { searchBarActive, notificationsPopoverVisible, popoverVisible } = this.state;
+    const lastSeenTimestamp = _.get(userSCMetaData, 'notifications_last_timestamp');
+    const notificationsCount = _.isUndefined(lastSeenTimestamp)
+      ? _.size(notifications)
+      : _.size(
+          _.filter(
+            notifications,
+            notification =>
+              lastSeenTimestamp < notification.timestamp &&
+              _.includes(PARSED_NOTIFICATIONS, notification.type),
+          ),
+        );
+    const displayBadge = notificationsCount > 0;
+    const notificationsCountDisplay = notificationsCount > 99 ? '99+' : notificationsCount;
     return (
       <div
         className={classNames('Topnav__menu-container', {
@@ -178,50 +176,46 @@ class Topnav extends React.Component {
               title={intl.formatMessage({ id: 'write_post', defaultMessage: 'Write post' })}
               mouseEnterDelay={1}
             >
-              <Link
-                to="/editor"
-                className="Topnav__link Topnav__link--action Topnav__link--action--btn"
-              >
-                Posts
+              <Link to="/editor" className="Topnav__link Topnav__link--action">
+                <i className="iconfont icon-write" />
               </Link>
             </BTooltip>
           </Menu.Item>
-
-          {/* <Menu.Item key="notifications" className="Topnav__item--badge"> */}
-          {/* <BTooltip */}
-          {/* placement="bottom" */}
-          {/* title={intl.formatMessage({ id: 'notifications', defaultMessage: 'Notifications' })} */}
-          {/* overlayClassName="Topnav__notifications-tooltip" */}
-          {/* mouseEnterDelay={1} */}
-          {/* > */}
-          {/* <Popover */}
-          {/* placement="bottomRight" */}
-          {/* trigger="click" */}
-          {/* content={ */}
-          {/* <Notifications */}
-          {/* notifications={notifications} */}
-          {/* onNotificationClick={this.handleCloseNotificationsPopover} */}
-          {/* currentAuthUsername={username} */}
-          {/* lastSeenTimestamp={lastSeenTimestamp} */}
-          {/* loadingNotifications={loadingNotifications} */}
-          {/* getUpdatedSCUserMetadata={this.props.getUpdatedSCUserMetadata} */}
-          {/* /> */}
-          {/* } */}
-          {/* visible={notificationsPopoverVisible} */}
-          {/* onVisibleChange={this.handleNotificationsPopoverVisibleChange} */}
-          {/* overlayClassName="Notifications__popover-overlay" */}
-          {/* title={intl.formatMessage({ id: 'notifications', defaultMessage: 'Notifications' })} */}
-          {/* > */}
-          {/* <a className="Topnav__link Topnav__link--light Topnav__link--action"> */}
-          {/* {displayBadge ? ( */}
-          {/* <div className="Topnav__notifications-count">{notificationsCountDisplay}</div> */}
-          {/* ) : ( */}
-          {/* <i className="iconfont icon-remind" /> */}
-          {/* )} */}
-          {/* </a> */}
-          {/* </Popover> */}
-          {/* </BTooltip> */}
-          {/* </Menu.Item> */}
+          <Menu.Item key="notifications" className="Topnav__item--badge">
+            <BTooltip
+              placement="bottom"
+              title={intl.formatMessage({ id: 'notifications', defaultMessage: 'Notifications' })}
+              overlayClassName="Topnav__notifications-tooltip"
+              mouseEnterDelay={1}
+            >
+              <Popover
+                placement="bottomRight"
+                trigger="click"
+                content={
+                  <Notifications
+                    notifications={notifications}
+                    onNotificationClick={this.handleCloseNotificationsPopover}
+                    currentAuthUsername={username}
+                    lastSeenTimestamp={lastSeenTimestamp}
+                    loadingNotifications={loadingNotifications}
+                    getUpdatedSCUserMetadata={this.props.getUpdatedSCUserMetadata}
+                  />
+                }
+                visible={notificationsPopoverVisible}
+                onVisibleChange={this.handleNotificationsPopoverVisibleChange}
+                overlayClassName="Notifications__popover-overlay"
+                title={intl.formatMessage({ id: 'notifications', defaultMessage: 'Notifications' })}
+              >
+                <a className="Topnav__link Topnav__link--light Topnav__link--action">
+                  {displayBadge ? (
+                    <div className="Topnav__notifications-count">{notificationsCountDisplay}</div>
+                  ) : (
+                    <i className="iconfont icon-remind" />
+                  )}
+                </a>
+              </Popover>
+            </BTooltip>
+          </Menu.Item>
           <Menu.Item key="user" className="Topnav__item-user">
             <Link className="Topnav__user" to={`/@${username}`} onClick={Topnav.handleScrollToTop}>
               <Avatar username={username} size={36} />
@@ -236,31 +230,30 @@ class Topnav extends React.Component {
               overlayStyle={{ position: 'fixed' }}
               content={
                 <PopoverMenu onSelect={this.handleMoreMenuSelect}>
-                  <PopoverMenuItem key="feed">
-                    <FormattedMessage id="home" defaultMessage="Home" />
+                  <PopoverMenuItem key="my-profile" fullScreenHidden>
+                    <FormattedMessage id="my_profile" defaultMessage="My profile" />
                   </PopoverMenuItem>
-                  <PopoverMenuItem key="my-profile">
-                    {/* fullScreenHidden */}
-                    <FormattedMessage id="blog" defaultMessage="Blog" />
+                  <PopoverMenuItem key="feed" fullScreenHidden>
+                    <FormattedMessage id="feed" defaultMessage="Feed" />
                   </PopoverMenuItem>
-                  {/* <PopoverMenuItem key="news" > */}
-                  {/* <FormattedMessage id="news" defaultMessage="News" /> */}
-                  {/* </PopoverMenuItem> */}
-                  {/* <PopoverMenuItem key="replies" > */}
-                  {/* <FormattedMessage id="replies" defaultMessage="Replies" /> */}
-                  {/* </PopoverMenuItem> */}
-                  <PopoverMenuItem key="wallet">
+                  <PopoverMenuItem key="news" fullScreenHidden>
+                    <FormattedMessage id="news" defaultMessage="News" />
+                  </PopoverMenuItem>
+                  <PopoverMenuItem key="replies" fullScreenHidden>
+                    <FormattedMessage id="replies" defaultMessage="Replies" />
+                  </PopoverMenuItem>
+                  <PopoverMenuItem key="wallet" fullScreenHidden>
                     <FormattedMessage id="wallet" defaultMessage="Wallet" />
                   </PopoverMenuItem>
-                  {/* <PopoverMenuItem key="activity"> */}
-                  {/* <FormattedMessage id="activity" defaultMessage="Activity" /> */}
-                  {/* </PopoverMenuItem> */}
-                  {/* <PopoverMenuItem key="bookmarks"> */}
-                  {/* <FormattedMessage id="bookmarks" defaultMessage="Bookmarks" /> */}
-                  {/* </PopoverMenuItem> */}
-                  {/* <PopoverMenuItem key="drafts"> */}
-                  {/* <FormattedMessage id="drafts" defaultMessage="Drafts" /> */}
-                  {/* </PopoverMenuItem> */}
+                  <PopoverMenuItem key="activity">
+                    <FormattedMessage id="activity" defaultMessage="Activity" />
+                  </PopoverMenuItem>
+                  <PopoverMenuItem key="bookmarks">
+                    <FormattedMessage id="bookmarks" defaultMessage="Bookmarks" />
+                  </PopoverMenuItem>
+                  <PopoverMenuItem key="drafts">
+                    <FormattedMessage id="drafts" defaultMessage="Drafts" />
+                  </PopoverMenuItem>
                   <PopoverMenuItem key="settings">
                     <FormattedMessage id="settings" defaultMessage="Settings" />
                   </PopoverMenuItem>
@@ -356,75 +349,43 @@ class Topnav extends React.Component {
 
     return (
       <div className="Topnav">
-        <div className="topnav-layout flex-box flex-row item-align-center">
-          <div className={classNames('nav-left', { 'Topnav__mobile-hidden': searchBarActive })}>
+        <div className="topnav-layout">
+          <div className={classNames('left', { 'Topnav__mobile-hidden': searchBarActive })}>
             <Link className="Topnav__brand" to="/">
               <img src={logo} alt="Logo" />
             </Link>
-            {/* <span className="Topnav__version">beta</span> */}
+            <span className="Topnav__version">beta</span>
           </div>
-          <div className={classNames('flex-1', { mobileVisible: searchBarActive })}>
+          <div className={classNames('center', { mobileVisible: searchBarActive })}>
             <div className="Topnav__input-container">
-              <ul>
-                <li>
-                  {' '}
-                  <Link className="nav-menu" to="#">
-                    {' '}
-                    In Evidence{' '}
-                  </Link>{' '}
-                </li>
-                <li>
-                  {' '}
-                  <Link className="nav-menu" to="#">
-                    {' '}
-                    Categories{' '}
-                  </Link>{' '}
-                </li>
-                <li>
-                  {' '}
-                  <Link className="nav-menu" to="#">
-                    {' '}
-                    Curates{' '}
-                  </Link>{' '}
-                </li>
-                <li>
-                  {' '}
-                  <Link className="nav-menu" to="#">
-                    {' '}
-                    Sponsors{' '}
-                  </Link>{' '}
-                </li>
-                <li>
-                  <AutoComplete
-                    dropdownClassName="Topnav__search-dropdown-container"
-                    dataSource={formattedAutoCompleteDropdown}
-                    onSearch={this.handleAutoCompleteSearch}
-                    onSelect={this.handleSelectOnAutoCompleteDropdown}
-                    onChange={this.handleOnChangeForAutoComplete}
-                    defaultActiveFirstOption={false}
-                    dropdownMatchSelectWidth={false}
-                    optionLabelProp="value"
-                    value={searchBarValue}
-                  >
-                    <Input
-                      ref={ref => {
-                        this.searchInputRef = ref;
-                      }}
-                      onPressEnter={this.handleSearchForInput}
-                      placeholder={intl.formatMessage({
-                        id: 'search_placeholder',
-                        defaultMessage: 'What are you looking for?',
-                      })}
-                      autoCapitalize="off"
-                      autoCorrect="off"
-                    />
-                  </AutoComplete>
-                  <i className="iconfont icon-search" />
-                </li>
-              </ul>
+              <AutoComplete
+                dropdownClassName="Topnav__search-dropdown-container"
+                dataSource={formattedAutoCompleteDropdown}
+                onSearch={this.handleAutoCompleteSearch}
+                onSelect={this.handleSelectOnAutoCompleteDropdown}
+                onChange={this.handleOnChangeForAutoComplete}
+                defaultActiveFirstOption={false}
+                dropdownMatchSelectWidth={false}
+                optionLabelProp="value"
+                value={searchBarValue}
+              >
+                <Input
+                  ref={ref => {
+                    this.searchInputRef = ref;
+                  }}
+                  onPressEnter={this.handleSearchForInput}
+                  placeholder={intl.formatMessage({
+                    id: 'search_placeholder',
+                    defaultMessage: 'What are you looking for?',
+                  })}
+                  autoCapitalize="off"
+                  autoCorrect="off"
+                />
+              </AutoComplete>
+              <i className="iconfont icon-search" />
             </div>
           </div>
-          <div className="nav-right">
+          <div className="right">
             <button
               className={classNames('Topnav__mobile-search', {
                 'Topnav__mobile-search-close': searchBarActive,

@@ -4,7 +4,7 @@
 @base-spacing: 0;
 
 .Topnav {
-  background-color: @white;
+  background-color: @white-smoke;
   height: 56px;
   line-height: 52px;
   border-bottom: @base-border;
@@ -13,7 +13,10 @@
     font-size: 30px;
     font-weight: bold;
     letter-spacing: 0.5px;
-
+    position: relative;
+    img {
+      width: 80%;
+    }
     &-icon {
       margin-right: 4px;
       font-size: 20px !important;
@@ -48,29 +51,48 @@
     height: 55px;
     display: flex;
     margin-left: 15px;
-
+    > ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: flex-end;
+      li {
+        display: inline-block;
+        flex: inherit;
+        position: relative;
+        a {
+          display: block;
+          padding: 0 25px;
+          color: @normal-grey;
+        }
+      }
+    }
     > .ant-select-show-search {
       width: 100%;
     }
 
     input {
-      height: 38px !important;
-      margin-top: 8px;
-      border-radius: @border-radius-base;
-      padding: 0 0 0 43px !important;
-      border: @border-width-base @border-style-base @border-color-base;
+      height: 30px !important;
+      margin-top: 0;
+      border-radius: 0 !important;
+      padding: 0 0 0 25px !important;
+      border: none;
+      border-bottom: @border-width-base @border-style-base @grey-darkGrey;
 
       &:hover,
       &:focus {
-        box-shadow: none !important;
-        border: @border-width-base @border-style-base @border-color-base !important;
+        //box-shadow: none !important;
+        //border: @border-width-base @border-style-base @border-color-base !important;
       }
     }
 
     i {
-      left: 16px;
+      left: 5px;
       position: absolute;
-      color: #c2ccd3;
+      color: @grey-darkGrey;
       font-size: 20px;
     }
     @media @small {
@@ -102,7 +124,15 @@
           font-weight: 600 !important;
 
           &.Topnav__link--action {
-            margin-top: 7px;
+            //margin-top: 7px;
+            &.Topnav__link--action--btn {
+              padding: 5px 35px;
+              line-height: 20px;
+              font-size: 13px;
+              font-weight: 300 !important;
+              color: @white !important;
+              .theme-gradient();
+            }
           }
 
           &:hover {

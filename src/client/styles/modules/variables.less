@@ -1,8 +1,8 @@
 @container-width: 1010px;
 @mobile-padding: 20px;
 @margin: 20px;
-@left-width: 180px;
-@right-width: 270px;
+@left-width: 150px;
+@right-width: 200px;
 
 // Responsive design
 @xsmall-bp: 400px;
@@ -23,3 +23,34 @@
 @small-max: ~'only screen and (max-width: @{small-bp}';
 @medium-max: ~'only screen and (max-width: @{medium-bp})';
 @large-max: ~'only screen and (max-width: @{large-bp})';
+
+.theme-gradient() {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0f084b+0,2675c9+51,207cca+67,0069ad+100 */
+  background: #0f084b; /* Old browsers */
+  background: -moz-linear-gradient(
+    left,
+    #0f084b 0%,
+    #2675c9 51%,
+    #207cca 67%,
+    #0069ad 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    #0f084b 0%,
+    #2675c9 51%,
+    #207cca 67%,
+    #0069ad 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to right,
+    #0f084b 0%,
+    #2675c9 51%,
+    #207cca 67%,
+    #0069ad 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(
+      startColorstr='#0f084b',
+      endColorstr='#0069ad',
+      GradientType=1
+    ); /* IE6-9 */
+}

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import LeftSidebar from '../app/Sidebar/LeftSidebar';
-import Affix from '../components/Utils/Affix';
+// import LeftSidebar from '../app/Sidebar/LeftSidebar';
+// import Affix from '../components/Utils/Affix';
 import * as notificationConstants from '../../common/constants/notifications';
 import { getUpdatedSCUserMetadata } from '../auth/authActions';
 import { getNotifications } from '../user/userActions';
@@ -60,11 +60,11 @@ class Notifications extends React.Component {
     return (
       <div className="shifted">
         <div className="feed-layout container">
-          <Affix className="leftContainer" stickPosition={77}>
-            <div className="left">
-              <LeftSidebar />
-            </div>
-          </Affix>
+          {/* <Affix className="leftContainer" stickPosition={77}> */}
+          {/* <div className="left"> */}
+          {/* <LeftSidebar /> */}
+          {/* </div> */}
+          {/* </Affix> */}
           <div className="NotificationsPage">
             <div className="NotificationsPage__title">
               <h1>

@@ -7,7 +7,6 @@ const PopoverMenu = ({ children, onSelect, bold }) => (
   <ul className="PopoverMenu">
     {React.Children.map(children, child => {
       const { children: itemChildren, ...otherProps } = child.props;
-
       return (
         <PopoverMenuItem
           key={child.key}

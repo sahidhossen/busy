@@ -6,6 +6,8 @@
   color: #353535;
   border-top: @base-border;
   border-bottom: @base-border;
+  //margin-bottom:12px;
+  flex: 50%;
   @media @small {
     border-radius: 4px;
     border: @base-border;
@@ -30,13 +32,18 @@
       vertical-align: 2px;
     }
   }
-
+  &:first-child {
+    //margin-right: 6px;
+  }
+  &:last-child {
+    //margin-left:6px;
+  }
   &:not(:first-child) {
-    margin-top: 12px;
+    //margin-top: 12px;
   }
 
   &:last-child {
-    margin-bottom: 12px;
+    //margin-bottom: 12px;
   }
 
   &__more {

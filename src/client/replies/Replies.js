@@ -15,7 +15,7 @@ import { getReplies, getMoreReplies } from '../feed/feedActions';
 import Feed from '../feed/Feed';
 import Loading from '../components/Icon/Loading';
 import Affix from '../components/Utils/Affix';
-import LeftSidebar from '../app/Sidebar/LeftSidebar';
+// import LeftSidebar from '../app/Sidebar/LeftSidebar';
 import RightSidebar from '../app/Sidebar/RightSidebar';
 import PostModal from '../post/PostModalContainer';
 import requiresLogin from '../auth/requiresLogin';
@@ -69,11 +69,11 @@ class Replies extends React.Component {
           <title>{intl.formatMessage({ id: 'replies', defaultMessage: 'Replies' })} - Busy</title>
         </Helmet>
         <div className="feed-layout container">
-          <Affix className="leftContainer" stickPosition={77}>
-            <div className="left">
-              <LeftSidebar />
-            </div>
-          </Affix>
+          {/* <Affix className="leftContainer" stickPosition={77}> */}
+          {/* <div className="left"> */}
+          {/* <LeftSidebar /> */}
+          {/* </div> */}
+          {/* </Affix> */}
           <Affix className="rightContainer" stickPosition={77}>
             <div className="right">
               <RightSidebar />

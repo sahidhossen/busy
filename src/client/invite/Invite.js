@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { Input } from 'antd';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import Affix from '../components/Utils/Affix';
-import LeftSidebar from '../app/Sidebar/LeftSidebar';
+// import Affix from '../components/Utils/Affix';
+// import LeftSidebar from '../app/Sidebar/LeftSidebar';
 import requiresLogin from '../auth/requiresLogin';
 import { getAuthenticatedUserName } from '../reducers';
 import FacebookShare from '../components/Button/FacebookShare';
@@ -71,11 +71,11 @@ export default class Invite extends React.Component {
           <title>{intl.formatMessage({ id: 'invite', defaultMessage: 'Invite' })} - Busy</title>
         </Helmet>
         <div className="settings-layout container">
-          <Affix className="leftContainer" stickPosition={77}>
-            <div className="left">
-              <LeftSidebar />
-            </div>
-          </Affix>
+          {/* <Affix className="leftContainer" stickPosition={77}> */}
+          {/* <div className="left"> */}
+          {/* <LeftSidebar /> */}
+          {/* </div> */}
+          {/* </Affix> */}
           <div className="center">
             <div className="Invite">
               <div className="Invite__icon-container" />

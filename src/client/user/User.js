@@ -18,7 +18,7 @@ import { getAccount } from './usersActions';
 import { getAvatarURL } from '../components/Avatar';
 import Error404 from '../statics/Error404';
 import UserHero from './UserHero';
-import LeftSidebar from '../app/Sidebar/LeftSidebar';
+// import LeftSidebar from '../app/Sidebar/LeftSidebar';
 import RightSidebar from '../app/Sidebar/RightSidebar';
 import Affix from '../components/Utils/Affix';
 import ScrollToTopOnMount from '../components/Utils/ScrollToTopOnMount';
@@ -170,11 +170,11 @@ export default class User extends React.Component {
         )}
         <div className="shifted">
           <div className="feed-layout container">
-            <Affix className="leftContainer leftContainer__user" stickPosition={72}>
-              <div className="left">
-                <LeftSidebar />
-              </div>
-            </Affix>
+            {/* <Affix className="leftContainer leftContainer__user" stickPosition={72}> */}
+            {/* <div className="left"> */}
+            {/* <LeftSidebar /> */}
+            {/* </div> */}
+            {/* </Affix> */}
             <Affix className="rightContainer" stickPosition={72}>
               <div className="right">{loaded && <RightSidebar key={user.name} />}</div>
             </Affix>
