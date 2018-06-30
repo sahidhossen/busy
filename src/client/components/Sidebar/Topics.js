@@ -16,7 +16,7 @@ class Topics extends React.Component {
   static defaultProps = {
     favorite: false,
     topics: [],
-    maxItems: 5,
+    maxItems: 10,
     loading: false,
   };
 

@@ -225,7 +225,12 @@ class Story extends React.Component {
       this.props.showPostModal(post);
     }
   }
-
+  formatTitle() {
+    const { post } = this.props;
+    let postTitle = post.title || post.root_title;
+    postTitle = postTitle.toLowerCase().replace(/\b./g, a => a.toUpperCase());
+    return postTitle.length > 80 ? `${postTitle.substring(0, 80)}...` : postTitle;
+  }
   renderStoryPreview() {
     const { post } = this.props;
     const showStoryPreview = this.getDisplayStoryPreview();
@@ -252,7 +257,6 @@ class Story extends React.Component {
       hiddenStoryPreviewMessage
     );
   }
-
   render() {
     const {
       intl,
@@ -305,7 +309,7 @@ class Story extends React.Component {
     return (
       <div className="Story" id={`${post.author}-${post.permlink}`}>
         {rebloggedUI}
-        <div className="Story__content">
+        <div className="Story__content__main">
           <div className="Story__header">
             <Link to={`/@${post.author}`}>
               <Avatar username={post.author} size={40} />
@@ -345,12 +349,13 @@ class Story extends React.Component {
             <a
               href={dropCategory(post.url)}
               target="_blank"
+              title={post.title || post.root_title}
               onClick={this.handlePostModalDisplay}
               className="Story__content__title"
             >
               <h2>
                 {post.depth !== 0 && <Tag color="#4f545c">RE</Tag>}
-                {post.title || post.root_title}
+                {this.formatTitle()}
               </h2>
             </a>
             {this.renderStoryPreview()}

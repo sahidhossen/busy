@@ -10,6 +10,7 @@ export default class PostFeedEmbed extends React.Component {
       embed: PropTypes.string,
     }).isRequired,
     inPost: PropTypes.bool,
+    postClass: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -34,8 +35,13 @@ export default class PostFeedEmbed extends React.Component {
   );
 
   renderThumbFirst(thumb) {
+    const { postClass } = this.props;
     return (
-      <div role="presentation" className="PostFeedEmbed" onClick={this.handleThumbClick}>
+      <div
+        role="presentation"
+        className={postClass ? `${postClass}  PostFeedEmbed` : 'PostFeedEmbed'}
+        onClick={this.handleThumbClick}
+      >
         <div className="PostFeedEmbed__playButton">
           <i className="iconfont icon-group icon-playon_fill" />
         </div>

@@ -38,7 +38,7 @@ export default function withEditor(WrappedComponent) {
         .then(res => res.json())
         .then(res => callback(res.url, blob.name))
         .catch(err => {
-          console.log('err', err);
+          console.log('err', err); // eslint-disable-line no-console
           errorCallback();
           message.error(
             formatMessage({

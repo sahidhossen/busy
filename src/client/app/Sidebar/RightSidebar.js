@@ -9,6 +9,8 @@ import {
   getRecommendations,
   getFollowingList,
   getIsFetchingFollowingList,
+  getIsTrendingTopicsLoading,
+  getTrendingTopics,
 } from '../../reducers';
 import { updateRecommendations } from '../../user/userActions';
 import InterestingPeople from '../../components/Sidebar/InterestingPeople';
@@ -19,6 +21,7 @@ import Loading from '../../components/Icon/Loading';
 import UserActivitySearch from '../../activity/UserActivitySearch';
 import WalletSidebar from '../../components/Sidebar/WalletSidebar';
 import FeedSidebar from '../../components/Sidebar/FeedSidebar';
+import Topics from '../../components/Sidebar/Topics';
 
 @withRouter
 @connect(
@@ -29,6 +32,8 @@ import FeedSidebar from '../../components/Sidebar/FeedSidebar';
     recommendations: getRecommendations(state),
     followingList: getFollowingList(state),
     isFetchingFollowingList: getIsFetchingFollowingList(state),
+    trendingTopicsLoading: getIsTrendingTopicsLoading(state),
+    trendingTopics: getTrendingTopics(state),
   }),
   {
     updateRecommendations,
@@ -44,6 +49,8 @@ export default class RightSidebar extends React.Component {
     updateRecommendations: PropTypes.func,
     followingList: PropTypes.arrayOf(PropTypes.string).isRequired,
     isFetchingFollowingList: PropTypes.bool.isRequired,
+    trendingTopicsLoading: PropTypes.bool.isRequired,
+    trendingTopics: PropTypes.arrayOf(PropTypes.string).isRequired,
   };
 
   static defaultProps = {
@@ -61,6 +68,8 @@ export default class RightSidebar extends React.Component {
       isAuthFetching,
       followingList,
       isFetchingFollowingList,
+      trendingTopicsLoading,
+      trendingTopics,
     } = this.props;
 
     if (isAuthFetching) {
@@ -95,6 +104,7 @@ export default class RightSidebar extends React.Component {
             path="/"
             render={() => (
               <div>
+                <Topics loading={trendingTopicsLoading} topics={trendingTopics} />
                 {authenticated &&
                 this.props.recommendations.length > 0 &&
                 !showPostRecommendation ? (

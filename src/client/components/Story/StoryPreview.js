@@ -33,6 +33,9 @@ const StoryPreview = ({ post }) => {
 
   const embeds = embedjs.getAll(post.body, { height: '100%' });
   const video = jsonMetadata.video;
+  const postTitle = post.title || post.root_title;
+  const mediaClassBasedOnTitle =
+    postTitle.replace(' ', '').length > 45 ? 'fixed_media' : 'big_media';
   let hasVideo = false;
   if (_.has(video, 'content.videohash') && _.has(video, 'info.snaphash')) {
     const author = _.get(video, 'info.author', '');
@@ -49,12 +52,23 @@ const StoryPreview = ({ post }) => {
   }
 
   const preview = {
-    text: () => <BodyShort key="text" className="Story__content__body" body={post.body} />,
+    text: (isAlone = false) => (
+      <BodyShort
+        length={isAlone ? 550 : 140}
+        key="text"
+        className="Story__content__body"
+        body={post.body}
+      />
+    ),
 
-    embed: () => embeds && embeds[0] && <PostFeedEmbed key="embed" embed={embeds[0]} />,
+    embed: () =>
+      embeds &&
+      embeds[0] && (
+        <PostFeedEmbed key="embed" postClass={mediaClassBasedOnTitle} embed={embeds[0]} />
+      ),
 
     image: () => (
-      <div key={imagePath} className="Story__content__img-container">
+      <div key={imagePath} className={`Story__content__img-container ${mediaClassBasedOnTitle}`}>
         <img alt="" src={imagePath} />
       </div>
     ),
@@ -89,7 +103,7 @@ const StoryPreview = ({ post }) => {
     bodyData.push(preview.text());
     bodyData.push(preview.image());
   } else {
-    bodyData.push(preview.text());
+    bodyData.push(preview.text(true));
   }
 
   return <div>{bodyData}</div>;
