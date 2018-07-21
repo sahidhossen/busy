@@ -10,7 +10,7 @@ function parseBlockChainError(error) {
   }
 
   // Log error to console for further investigation.
-  console.log('Unknown error', error);
+  console.log('Unknown error', error); // eslint-disable-line
   return 'Unkown error has occured.';
 }
 

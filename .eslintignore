@@ -7,4 +7,5 @@ src/client/vendor
 # Build files
 assets/
 public/
-build/
+build/*
+scripts/*

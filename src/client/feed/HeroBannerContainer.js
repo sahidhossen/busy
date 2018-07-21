@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import HeroBanner from '../components/HeroBanner';
+// import HeroBanner from '../components/HeroBanner';
+import HeroBannerNonUser from '../components/HeroBannerNonUser';
 import { getIsAuthenticated, getIsLoaded, getIsBannerClosed } from '../reducers';
 import { closeBanner } from '../app/appActions';
 
@@ -10,4 +11,4 @@ export default connect(
   dispatch => ({
     onCloseClick: () => dispatch(closeBanner()),
   }),
-)(HeroBanner);
+)(HeroBannerNonUser);

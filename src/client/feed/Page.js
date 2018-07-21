@@ -15,6 +15,7 @@ import Affix from '../components/Utils/Affix';
 import ScrollToTop from '../components/Utils/ScrollToTop';
 import ScrollToTopOnMount from '../components/Utils/ScrollToTopOnMount';
 import QuickPostEditor from '../components/QuickPostEditor/QuickPostEditor';
+import TopSlider from './slider/TopSlider';
 
 @connect(state => ({
   authenticated: getIsAuthenticated(state),
@@ -63,6 +64,8 @@ class Page extends React.Component {
         <ScrollToTop />
         <ScrollToTopOnMount />
         <HeroBannerContainer />
+        {authenticated && <TopSlider />}
+
         <div className="shifted">
           <div className="feed-layout container">
             {/* <Affix className="leftContainer" stickPosition={77}> */}
@@ -86,6 +89,7 @@ class Page extends React.Component {
                   onTopicClose={this.handleTopicClose}
                 />
               )}
+
               {authenticated && <QuickPostEditor />}
               <SubFeed />
             </div>
