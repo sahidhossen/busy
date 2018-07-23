@@ -324,7 +324,8 @@ class Topnav extends React.Component {
   render() {
     const { intl, autoCompleteSearchResults } = this.props;
     const { searchBarActive, searchBarValue } = this.state;
-    const logo = '/images/Logo_SteemItalia.svg';
+    const logo = '/images/Steem_Italia_logo.svg';
+
     const dropdownOptions = _.map(autoCompleteSearchResults, option => (
       <AutoComplete.Option key={option} value={option} className="Topnav__search-autocomplete">
         {option}

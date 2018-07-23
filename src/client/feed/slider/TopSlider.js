@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import NextArrow from './NextArrow';
 import PrevArrow from './PrevArrow';
@@ -77,8 +78,20 @@ const TopSlider = () => (
             <img className="user-avatar-image" src={avatar} alt="User Avatar" />
           </div>
           <div className="caption">
-            <p className="slider-content"> {slider.content} </p>
-            <h3 className="slider-title"> {slider.title} </h3>
+            <p className="slider-content">
+              {' '}
+              <Link target="_blank" to={slider.link}>
+                {' '}
+                {slider.content}{' '}
+              </Link>{' '}
+            </p>
+            <h3 className="slider-title">
+              {' '}
+              <Link target="_blank" to={slider.link}>
+                {' '}
+                {slider.title}{' '}
+              </Link>{' '}
+            </h3>
             <p className="date"> {slider.date} </p>
           </div>
         </div>
