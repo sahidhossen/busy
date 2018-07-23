@@ -10,47 +10,53 @@ const sliderObj = [
     image: '/images/slider/slider_1.png',
     content: 'Cari steemies, vagare per una città senza una mappa e senza una guida è affascinante',
     title: 'Esplorare qua e là...',
-    link: 'https://steemit.com/ita/@isakost/esplorare-qua-e-la',
+    link: '/ita/@isakost/esplorare-qua-e-la',
     date: '18/07/2018',
+    avatar: 'https://steemitimages.com/u/isakost/avatar',
   },
   {
     image: '/images/slider/slider_2.jpg',
     content:
       "Ciao a tutti, in questo post vorrei parlare dell'informazione dei giovani riguardo alle nuove tecnologie",
     title: 'Blockchain e Bitcoin sono conosciuti tra i giovani?',
-    link: 'https://steemit.com/ita/@lelluzzo/blockchain-e-bitcoin-sono-conosciuti-tra-i-giovani',
+    link: '/ita/@lelluzzo/blockchain-e-bitcoin-sono-conosciuti-tra-i-giovani',
     date: '17/07/2018',
+    avatar: 'https://steemitimages.com/u/lelluzzo/avatar',
   },
   {
     image: '/images/slider/slider_3.jpg',
     content:
       "Erano passate ormai diverse settimane da quando Liz aveva incontrato l'uomo della casa azzurra. ",
     title: 'La finestra gialla [parte terza]',
-    link: 'https://steemit.com/ita/@pawpawpaw/la-finestra-gialla-parte-tre',
+    link: '/ita/@pawpawpaw/la-finestra-gialla-parte-tre',
     date: '17/07/2018',
+    avatar: 'https://steemitimages.com/u/pawpawpaw/avatar',
   },
   {
     image: '/images/slider/slider_4.JPG',
     content: 'Ciao Steemians! In questo post vi ho parlato del mio grande amico Simo, in arte Leon',
     title: "Leon: l'evoluzione continua",
-    link: 'https://steemit.com/dlive/@dexpartacus/da522f10-899d-11e8-adb2-bf4283a63cb9',
+    link: '/dlive/@dexpartacus/da522f10-899d-11e8-adb2-bf4283a63cb9',
     date: '18/07/2018',
+    avatar: 'https://steemitimages.com/u/dexpartacus/avatar',
   },
   {
     image: '/images/slider/slider_5.jpg',
     content:
       'Una delle mie tanti passioni è il cibo, per questo non solo seguo con affetto @alinaknot e guardo in tv molti programmi dedicati ad esso',
     title: 'Passione street food #Agliana',
-    link: 'https://steemit.com/ita/@noemilunastorta/passione-street-food-agliana',
+    link: '/ita/@noemilunastorta/passione-street-food-agliana',
     date: '18/07/2018',
+    avatar: 'https://steemitimages.com/u/noemilunastorta/avatar',
   },
   {
     image: '/images/slider/slider_6.jpeg',
     content:
       'IL PORTIERE: Uno dei ruoli forse più affascinanti, misteriosi, particolari nel calcio.',
     title: 'Il portiere della nebbia',
-    link: 'https://steemit.com/ita/@mondodidave73/il-portiere-della-nebbia',
+    link: '/ita/@mondodidave73/il-portiere-della-nebbia',
     date: '19/07/2018',
+    avatar: 'https://steemitimages.com/u/mondodidave73/avatar',
   },
 ];
 
@@ -65,8 +71,6 @@ const settings = {
   prevArrow: <PrevArrow />,
 };
 
-const avatar = '/images/Icon_User_Article.svg';
-
 const TopSlider = () => (
   <div className="topSlider">
     <Slider {...settings}>
@@ -75,16 +79,9 @@ const TopSlider = () => (
           <div className="slider-hover" />
           <img src={slider.image} alt="Slider 1" />
           <div className="user-avatar">
-            <img className="user-avatar-image" src={avatar} alt="User Avatar" />
+            <img className="user-avatar-image" src={slider.avatar} alt="User Avatar" />
           </div>
           <div className="caption">
-            <p className="slider-content">
-              {' '}
-              <Link target="_blank" to={slider.link}>
-                {' '}
-                {slider.content}{' '}
-              </Link>{' '}
-            </p>
             <h3 className="slider-title">
               {' '}
               <Link target="_blank" to={slider.link}>
@@ -92,6 +89,14 @@ const TopSlider = () => (
                 {slider.title}{' '}
               </Link>{' '}
             </h3>
+            <p className="slider-content">
+              {' '}
+              <Link target="_blank" to={slider.link}>
+                {' '}
+                {slider.content}{' '}
+              </Link>{' '}
+            </p>
+
             <p className="date"> {slider.date} </p>
           </div>
         </div>
