@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const arrowIcon = '/images/arrow-right.png';
 const NextArrow = ({ className, style, onClick }) => (
   <div
-    className={className}
+    className={typeof className === 'undefined' ? '' : className}
     style={{ ...style, display: 'block' }}
     onClick={onClick}
     role="link"
@@ -15,9 +15,13 @@ const NextArrow = ({ className, style, onClick }) => (
 );
 
 NextArrow.propTypes = {
-  className: PropTypes.string.isRequired,
-  style: PropTypes.shape().isRequired,
-  onClick: PropTypes.func.isRequired,
+  className: PropTypes.string,
+  style: PropTypes.shape(),
+  onClick: PropTypes.func,
 };
-
+NextArrow.defaultProps = {
+  className: '',
+  style: {},
+  onClick: () => null,
+};
 export default NextArrow;

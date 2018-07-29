@@ -395,34 +395,34 @@ class Topnav extends React.Component {
                     Sponsors{' '}
                   </Link>{' '}
                 </li>
-                <li>
-                  <AutoComplete
-                    dropdownClassName="Topnav__search-dropdown-container"
-                    dataSource={formattedAutoCompleteDropdown}
-                    onSearch={this.handleAutoCompleteSearch}
-                    onSelect={this.handleSelectOnAutoCompleteDropdown}
-                    onChange={this.handleOnChangeForAutoComplete}
-                    defaultActiveFirstOption={false}
-                    dropdownMatchSelectWidth={false}
-                    optionLabelProp="value"
-                    value={searchBarValue}
-                  >
-                    <Input
-                      ref={ref => {
-                        this.searchInputRef = ref;
-                      }}
-                      onPressEnter={this.handleSearchForInput}
-                      placeholder={intl.formatMessage({
-                        id: 'search_placeholder',
-                        defaultMessage: 'What are you looking for?',
-                      })}
-                      autoCapitalize="off"
-                      autoCorrect="off"
-                    />
-                  </AutoComplete>
-                  <i className="iconfont icon-search" />
-                </li>
               </ul>
+              <div className={classNames('search_box ', { mobileVisible: searchBarActive })}>
+                <AutoComplete
+                  dropdownClassName="Topnav__search-dropdown-container"
+                  dataSource={formattedAutoCompleteDropdown}
+                  onSearch={this.handleAutoCompleteSearch}
+                  onSelect={this.handleSelectOnAutoCompleteDropdown}
+                  onChange={this.handleOnChangeForAutoComplete}
+                  defaultActiveFirstOption={false}
+                  dropdownMatchSelectWidth={false}
+                  optionLabelProp="value"
+                  value={searchBarValue}
+                >
+                  <Input
+                    ref={ref => {
+                      this.searchInputRef = ref;
+                    }}
+                    onPressEnter={this.handleSearchForInput}
+                    placeholder={intl.formatMessage({
+                      id: 'search_placeholder',
+                      defaultMessage: 'What are you looking for?',
+                    })}
+                    autoCapitalize="off"
+                    autoCorrect="off"
+                  />
+                </AutoComplete>
+                <i className="iconfont icon-search" />
+              </div>
             </div>
           </div>
           <div className="nav-right">

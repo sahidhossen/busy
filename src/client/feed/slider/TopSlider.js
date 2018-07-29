@@ -69,6 +69,27 @@ const settings = {
   centerPadding: '260px',
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
+  responsive: [
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        centerMode: true,
+        centerPadding: '10px',
+        slidesToScroll: 1,
+        initialSlide: 1,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        centerMode: true,
+        centerPadding: '10px',
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };
 
 const TopSlider = () => (
