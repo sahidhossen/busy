@@ -71,7 +71,7 @@ const settings = {
   prevArrow: <PrevArrow />,
   responsive: [
     {
-      breakpoint: 600,
+      breakpoint: 980,
       settings: {
         slidesToShow: 1,
         centerMode: true,
@@ -81,11 +81,21 @@ const settings = {
       },
     },
     {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        centerMode: false,
+        // centerPadding: '10px',
+        slidesToScroll: 1,
+        initialSlide: 1,
+      },
+    },
+    {
       breakpoint: 480,
       settings: {
         slidesToShow: 1,
-        centerMode: true,
-        centerPadding: '10px',
+        centerMode: false,
+        // centerPadding: '10px',
         slidesToScroll: 1,
       },
     },

@@ -11,6 +11,8 @@ import * as accountHistoryConstants from '../../common/constants/accountHistory'
  * @returns {function}
  */
 export function getDiscussionsFromAPI(sortBy, query, steemAPI) {
+  const apiQuery = query;
+  if (typeof apiQuery.tag === 'undefined') apiQuery.tag = 'ita';
   switch (sortBy) {
     case 'feed':
     case 'hot':
@@ -20,7 +22,7 @@ export function getDiscussionsFromAPI(sortBy, query, steemAPI) {
     case 'blog':
     case 'comments':
     case 'promoted':
-      return steemAPI.sendAsync(`get_discussions_by_${sortBy}`, [query]);
+      return steemAPI.sendAsync(`get_discussions_by_${sortBy}`, [apiQuery]);
     default:
       throw new Error('There is not API endpoint defined for this sorting');
   }

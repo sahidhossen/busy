@@ -61,8 +61,10 @@ class SubFeed extends React.Component {
   componentDidMount() {
     const { authenticated, loaded, user, match, feed } = this.props;
 
-    const category = match.params.category;
+    let category = match.params.category;
     let content = [];
+
+    if (typeof category === 'undefined') category = 'ita';
 
     if (!loaded && Cookie.get('access_token')) return;
 
