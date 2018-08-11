@@ -22,7 +22,7 @@ export const GET_MORE_REPLIES = createAsyncActionType('@user/GET_MORE_REPLIES');
 
 export const GET_BOOKMARKS = createAsyncActionType('@bookmarks/GET_BOOKMARKS');
 
-export const getFeedContent = ({ sortBy = 'trending', category, limit = 20 }) => (
+export const getFeedContent = ({ sortBy = 'created', category, limit = 20 }) => (
   dispatch,
   getState,
   { steemAPI },
@@ -45,6 +45,7 @@ export const getMoreFeedContent = ({ sortBy, category, limit = 20 }) => (
   const state = getState();
   const feed = getFeed(state);
   const posts = getPosts(state);
+
   const feedContent = getFeedFromState(sortBy, category, feed);
 
   if (!feedContent.length) return Promise.resolve(null);

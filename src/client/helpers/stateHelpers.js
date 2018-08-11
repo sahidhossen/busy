@@ -92,16 +92,16 @@ export const getFeedFailedFromState = (sortBy, listName = 'all', feedState) => {
 
 // returning the same function but different naming helps to understand the code's flow better
 // and defines a pattern to scale this feature with reselect
-export const getUserFeedFromState = (username, feed) => getFeedFromState('feed', username, feed);
+export const getUserFeedFromState = (username, feed) => getFeedFromState('created', username, feed);
 
 export const getUserFeedLoadingFromState = (username, feedState) =>
-  getFeedLoadingFromState('feed', username, feedState);
+  getFeedLoadingFromState('created', username, feedState);
 
 export const getUserFeedFetchedFromState = (username, feedState) =>
-  getFeedLoadingFromState('feed', username, feedState);
+  getFeedLoadingFromState('created', username, feedState);
 
 export const getUserFeedFailedFromState = (username, feedState) =>
-  getFeedFailedFromState('feed', username, feedState);
+  getFeedFailedFromState('created', username, feedState);
 
 /**
  * Sort comments based on payout
@@ -110,7 +110,7 @@ export const getUserFeedFailedFromState = (username, feedState) =>
  * @param {String} sortBy - how comments should be sorted
  * @returns {Array} - list of sorted IDs
  */
-export const sortCommentsFromSteem = (list, commentsState, sortBy = 'trending') => {
+export const sortCommentsFromSteem = (list, commentsState, sortBy = 'created') => {
   let compareFunc;
   const newList = [...list];
 
