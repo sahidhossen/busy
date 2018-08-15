@@ -52,9 +52,8 @@ class Page extends React.Component {
 
     const shouldDisplaySelector = location.pathname !== '/' || (!authenticated && loaded);
     const displayTopicSelector = location.pathname === '/trending';
-
+    const shouldDisplaySlider = authenticated && loaded;
     const robots = location.pathname === '/' ? 'index,follow' : 'noindex,follow';
-
     return (
       <div>
         <Helmet>
@@ -63,8 +62,8 @@ class Page extends React.Component {
         </Helmet>
         <ScrollToTop />
         <ScrollToTopOnMount />
-        <HeroBannerContainer />
-        {authenticated && <TopSlider />}
+        {loaded && <HeroBannerContainer />}
+        {shouldDisplaySlider && <TopSlider />}
 
         <div className="shifted">
           <div className="feed-layout container">

@@ -360,7 +360,7 @@ class Topnav extends React.Component {
         <div className="topnav-layout flex-box flex-row item-align-center">
           <div className={classNames('nav-left', { 'Topnav__mobile-hidden': searchBarActive })}>
             <Link className="Topnav__brand" to="/">
-              <img src={logo} alt="Logo" />
+              <img width="150px" src={logo} alt="Logo" />
             </Link>
             {/* <span className="Topnav__version">beta</span> */}
           </div>
