@@ -25,5 +25,6 @@ module.exports = {
     ],
     'no-console': ON,
     'global-require': OFF,
+    "react/prefer-stateless-function": "off"
   },
 };

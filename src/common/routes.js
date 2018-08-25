@@ -25,6 +25,8 @@ import Search from '../client/search/Search';
 import Notifications from '../client/notifications/Notifications';
 import Error404 from '../client/statics/Error404';
 import ExitPage from '../client/statics/ExitPage';
+import Faq from '../client/faq/Faq';
+import About from '../client/about/About';
 
 const routes = [
   {
@@ -142,6 +144,14 @@ const routes = [
       {
         path: '/exit',
         component: ExitPage,
+      },
+      {
+        path: '/faq',
+        component: Faq,
+      },
+      {
+        path: '/about',
+        component: About,
       },
       {
         path: '/:sortBy(trending|created|active|hot|promoted)/:category?',

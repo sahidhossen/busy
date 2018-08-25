@@ -368,31 +368,41 @@ class Topnav extends React.Component {
             <div className="Topnav__input-container">
               <ul>
                 <li>
-                  {' '}
-                  <Link className="nav-menu" to="#">
+                  <Link className="nav-menu" to="/created/spi-postit">
                     {' '}
-                    In Evidence{' '}
+                    POSTIT{' '}
                   </Link>{' '}
                 </li>
                 <li>
-                  {' '}
-                  <Link className="nav-menu" to="#">
+                  <Link className="nav-menu" to="/created/spi-contest">
                     {' '}
-                    Categories{' '}
+                    CONTEST{' '}
                   </Link>{' '}
                 </li>
                 <li>
-                  {' '}
-                  <Link className="nav-menu" to="#">
+                  <Link className="nav-menu" to="/created/spi-project">
                     {' '}
-                    Curates{' '}
+                    PROGETTI{' '}
+                  </Link>{' '}
+                </li>
+                {this.props.username && (
+                  <li>
+                    <Link className="nav-menu" to="/@user/feed">
+                      {' '}
+                      SEGUITI{' '}
+                    </Link>{' '}
+                  </li>
+                )}
+                <li>
+                  <Link className="nav-menu" to="/faq">
+                    {' '}
+                    FAQ{' '}
                   </Link>{' '}
                 </li>
                 <li>
-                  {' '}
-                  <Link className="nav-menu" to="#">
+                  <Link className="nav-menu" to="/about">
                     {' '}
-                    Sponsors{' '}
+                    ABOUT{' '}
                   </Link>{' '}
                 </li>
               </ul>

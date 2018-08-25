@@ -4,7 +4,7 @@ const api = sc2.Initialize({
   app: process.env.STEEMCONNECT_CLIENT_ID,
   baseURL: process.env.STEEMCONNECT_HOST,
   callbackURL: process.env.STEEMCONNECT_REDIRECT_URL,
-  scope: ['vote', 'comment', 'delete_comment', 'comment_options'],
+  scope: ['vote', 'comment', 'delete_comment', 'comment_options', 'custom_json'],
 });
 
 export default api;
