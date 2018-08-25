@@ -10,7 +10,7 @@ import {
   getFollowingList,
   getIsFetchingFollowingList,
   getIsTrendingTopicsLoading,
-  getTrendingTopics,
+  // getTrendingTopics,
 } from '../../reducers';
 import { updateRecommendations } from '../../user/userActions';
 import InterestingPeople from '../../components/Sidebar/InterestingPeople';
@@ -23,6 +23,52 @@ import WalletSidebar from '../../components/Sidebar/WalletSidebar';
 import FeedSidebar from '../../components/Sidebar/FeedSidebar';
 import Topics from '../../components/Sidebar/Topics';
 
+const customTopics = [
+  'bitcoin',
+  'blockchain',
+  'cryptocurrency',
+  'economy',
+  'money',
+  'society',
+  'politics (scienza politica)',
+  'work',
+  'psychology',
+  'philosophy',
+  'communication',
+  'literature',
+  'history',
+  'book',
+  'nature',
+  'health',
+  'science ',
+  'technology',
+  'scienze ',
+  'itastem',
+  'travel',
+  'world',
+  'adventure',
+  'story',
+  'writing',
+  'poetry',
+  'life',
+  'art',
+  'photography ',
+  'drawing',
+  'video',
+  'food',
+  'howto',
+  'tutorial',
+  'hobby',
+  'game',
+  'entertainment ',
+  'sport ',
+  'music ',
+  'cinema',
+  'introduceyourself ',
+  'steemit ',
+  'contest',
+];
+
 @withRouter
 @connect(
   state => ({
@@ -33,7 +79,7 @@ import Topics from '../../components/Sidebar/Topics';
     followingList: getFollowingList(state),
     isFetchingFollowingList: getIsFetchingFollowingList(state),
     trendingTopicsLoading: getIsTrendingTopicsLoading(state),
-    trendingTopics: getTrendingTopics(state),
+    trendingTopics: customTopics, // getTrendingTopics(state)
   }),
   {
     updateRecommendations,
