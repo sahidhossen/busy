@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
+import Footer from '../components/Footer/Footer';
 import '../faq/Faq.less';
 
 class About extends React.Component {
@@ -22,6 +23,7 @@ class About extends React.Component {
             }{' '}
           </p>
         </div>
+        <Footer />
       </div>
     );
   }

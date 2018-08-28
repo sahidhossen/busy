@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
+import Footer from '../components/Footer/Footer';
 import './Faq.less';
 
 class Faq extends React.Component {
@@ -28,6 +29,7 @@ class Faq extends React.Component {
             }{' '}
           </p>
         </div>
+        <Footer />
       </div>
     );
   }

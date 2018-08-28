@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-
 import { getFeedContent } from './feedActions';
 import { getIsLoaded, getIsAuthenticated } from '../reducers';
 import SubFeed from './SubFeed';
@@ -16,6 +15,7 @@ import ScrollToTop from '../components/Utils/ScrollToTop';
 import ScrollToTopOnMount from '../components/Utils/ScrollToTopOnMount';
 import QuickPostEditor from '../components/QuickPostEditor/QuickPostEditor';
 import TopSlider from './slider/TopSlider';
+import Footer from '../components/Footer/Footer';
 
 @connect(state => ({
   authenticated: getIsAuthenticated(state),
@@ -94,6 +94,7 @@ class Page extends React.Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

@@ -5,17 +5,63 @@ import Topic from '../Button/Topic';
 import Loading from '../Icon/Loading';
 import './Topics.less';
 
+const customTopics = [
+  'bitcoin',
+  'blockchain',
+  'cryptocurrency',
+  'economy',
+  'money',
+  'society',
+  'politics (scienza politica)',
+  'work',
+  'psychology',
+  'philosophy',
+  'communication',
+  'literature',
+  'history',
+  'book',
+  'nature',
+  'health',
+  'science ',
+  'technology',
+  'scienze ',
+  'itastem',
+  'travel',
+  'world',
+  'adventure',
+  'story',
+  'writing',
+  'poetry',
+  'life',
+  'art',
+  'photography ',
+  'drawing',
+  'video',
+  'food',
+  'howto',
+  'tutorial',
+  'hobby',
+  'game',
+  'entertainment ',
+  'sport ',
+  'music ',
+  'cinema',
+  'introduceyourself ',
+  'steemit ',
+  'contest',
+];
+
 class Topics extends React.Component {
   static propTypes = {
     favorite: PropTypes.bool,
-    topics: PropTypes.arrayOf(PropTypes.string),
+    // topics: PropTypes.arrayOf(PropTypes.string),
     maxItems: PropTypes.number,
     loading: PropTypes.bool,
   };
 
   static defaultProps = {
     favorite: false,
-    topics: [],
+    // topics: [],
     maxItems: 10,
     loading: false,
   };
@@ -32,8 +78,8 @@ class Topics extends React.Component {
   }
 
   render() {
-    const { topics, favorite, maxItems, loading } = this.props;
-
+    const { favorite, maxItems, loading } = this.props;
+    const topics = customTopics;
     const displayedTopics = this.state.showMore ? topics : topics.slice(0, maxItems);
 
     return (
