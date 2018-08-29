@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Footer.less';
 
 class Footer extends React.Component {
@@ -8,11 +7,11 @@ class Footer extends React.Component {
       <div className="footer-base">
         <p className="text-center">
           {' '}
-          With love by{' '}
-          <Link to="http://www.beyconsulting.it/" target="_blank">
+          With <span className="love">&#10084;</span> by{' '}
+          <a href={`http://www.beyconsulting.it/`} target="_blank">
             {' '}
             BeY{' '}
-          </Link>{' '}
+          </a>{' '}
         </p>
       </div>
     );
