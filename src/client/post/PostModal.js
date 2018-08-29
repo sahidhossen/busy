@@ -123,10 +123,20 @@ class PostModal extends React.Component {
           <Link to={`/@${author}/${permlink}`} className="PostModal__action">
             <i className="iconfont icon-send PostModal__icon" />
           </Link>
-          <a href={twitterShareURL} target="_blank" className="PostModal__action">
+          <a
+            href={twitterShareURL}
+            rel="noopener noreferrer"
+            target="_blank"
+            className="PostModal__action"
+          >
             <i className="iconfont icon-twitter PostModal__icon" />
           </a>
-          <a href={facebookShareURL} target="_blank" className="PostModal__action">
+          <a
+            href={facebookShareURL}
+            rel="noopener noreferrer"
+            target="_blank"
+            className="PostModal__action"
+          >
             <i className="iconfont icon-facebook PostModal__icon" />
           </a>
         </div>

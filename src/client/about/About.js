@@ -11,7 +11,7 @@ class About extends React.Component {
     return (
       <div>
         <Helmet>
-          <title>Busy</title>
+          <title>Steem Italia</title>
           <meta name="robots" content={robots} />
         </Helmet>
         <div className="container faq-container">

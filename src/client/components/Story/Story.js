@@ -248,6 +248,7 @@ class Story extends React.Component {
       <a
         href={dropCategory(post.url)}
         target="_blank"
+        rel="noopener noreferrer"
         onClick={this.handlePreviewClickPostModalDisplay}
         className="Story__content__preview"
       >
@@ -349,6 +350,7 @@ class Story extends React.Component {
             <a
               href={dropCategory(post.url)}
               target="_blank"
+              rel="noopener noreferrer"
               title={post.title || post.root_title}
               onClick={this.handlePostModalDisplay}
               className="Story__content__title"

@@ -182,7 +182,7 @@ class Topnav extends React.Component {
                 to="/editor"
                 className="Topnav__link Topnav__link--action Topnav__link--action--btn"
               >
-                Posts
+                Crea un Post
               </Link>
             </BTooltip>
           </Menu.Item>
