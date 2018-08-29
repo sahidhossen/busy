@@ -97,9 +97,7 @@ class Drafts extends React.Component {
     return (
       <div className="Drafts shifted">
         <Helmet>
-          <title>
-            {intl.formatMessage({ id: 'drafts', defaultMessage: 'Drafts' })} - Steem Italia
-          </title>
+          <title>{intl.formatMessage({ id: 'drafts', defaultMessage: 'Drafts' })} - Steem Italia</title>
         </Helmet>
         <div className="drafts-layout container">
           {/* <Affix className="leftContainer" stickPosition={77}> */}

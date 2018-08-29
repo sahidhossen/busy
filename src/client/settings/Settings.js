@@ -197,9 +197,7 @@ export default class Settings extends React.Component {
     return (
       <div className="shifted">
         <Helmet>
-          <title>
-            {intl.formatMessage({ id: 'settings', defaultMessage: 'Settings' })} - Steem Italia
-          </title>
+          <title>{intl.formatMessage({ id: 'settings', defaultMessage: 'Settings' })} - Steem Italia</title>
         </Helmet>
         <div className="settings-layout container">
           {/* <Affix className="leftContainer" stickPosition={77}> */}

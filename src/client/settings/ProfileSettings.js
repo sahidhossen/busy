@@ -143,8 +143,7 @@ export default class ProfileSettings extends React.Component {
       <div className="shifted">
         <Helmet>
           <title>
-            {intl.formatMessage({ id: 'edit_profile', defaultMessage: 'Edit profile' })} - Steem
-            Italia
+            {intl.formatMessage({ id: 'edit_profile', defaultMessage: 'Edit profile' })} - Steem Italia
           </title>
         </Helmet>
         <div className="settings-layout container">
