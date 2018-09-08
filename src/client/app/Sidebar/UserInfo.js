@@ -87,8 +87,7 @@ class UserInfo extends React.Component {
               </div>
               <div>
                 <i className="iconfont icon-flashlight text-icon" />
-                <FormattedMessage id="voting_power" defaultMessage="Voting Power" />
-                :{' '}
+                <FormattedMessage id="voting_power" defaultMessage="Voting Power" />:{' '}
                 <FormattedNumber
                   style="percent" // eslint-disable-line react/style-prop-object
                   value={calculateVotingPower(user)}
@@ -97,8 +96,7 @@ class UserInfo extends React.Component {
               </div>
               <div>
                 <i className="iconfont icon-dollar text-icon" />
-                <FormattedMessage id="vote_value" defaultMessage="Vote Value" />
-                :{' '}
+                <FormattedMessage id="vote_value" defaultMessage="Vote Value" />:{' '}
                 {isNaN(voteWorth) ? (
                   <Icon type="loading" className="text-icon-right" />
                 ) : (

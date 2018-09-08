@@ -12,7 +12,7 @@ const customTopics = [
   'economy',
   'money',
   'society',
-  'politics (scienza politica)',
+  'politics',
   'work',
   'psychology',
   'philosophy',

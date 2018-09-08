@@ -24,7 +24,9 @@ export default function withEditor(WrappedComponent) {
     };
 
     handleImageUpload = (blob, callback, errorCallback) => {
-      const { intl: { formatMessage } } = this.props;
+      const {
+        intl: { formatMessage },
+      } = this.props;
       message.info(
         formatMessage({ id: 'notify_uploading_image', defaultMessage: 'Uploading image' }),
       );

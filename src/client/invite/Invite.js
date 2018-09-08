@@ -68,7 +68,9 @@ export default class Invite extends React.Component {
     return (
       <div className="shifted">
         <Helmet>
-          <title>{intl.formatMessage({ id: 'invite', defaultMessage: 'Invite' })} - Steem Italia</title>
+          <title>
+            {intl.formatMessage({ id: 'invite', defaultMessage: 'Invite' })} - Steem Italia
+          </title>
         </Helmet>
         <div className="settings-layout container">
           {/* <Affix className="leftContainer" stickPosition={77}> */}
@@ -80,7 +82,10 @@ export default class Invite extends React.Component {
             <div className="Invite">
               <div className="Invite__icon-container" />
               <h1 className="Invite__title">
-                <FormattedMessage id="invite_title" defaultMessage="Don't use Steem Italia alone!" />
+                <FormattedMessage
+                  id="invite_title"
+                  defaultMessage="Don't use Steem Italia alone!"
+                />
               </h1>
               <p className="Invite__description">
                 <FormattedMessage
@@ -103,7 +108,8 @@ export default class Invite extends React.Component {
                   text={intl.formatMessage(
                     {
                       id: 'invite_share',
-                      defaultMessage: 'Join me today on Steem Italia and get rewarded to blog {link}',
+                      defaultMessage:
+                        'Join me today on Steem Italia and get rewarded to blog {link}',
                     },
                     {
                       link: '',
@@ -115,7 +121,8 @@ export default class Invite extends React.Component {
                   text={intl.formatMessage(
                     {
                       id: 'invite_share',
-                      defaultMessage: 'Join me today on Steem Italia and get rewarded to blog {link}',
+                      defaultMessage:
+                        'Join me today on Steem Italia and get rewarded to blog {link}',
                     },
                     {
                       link: this.state.inviteURL,

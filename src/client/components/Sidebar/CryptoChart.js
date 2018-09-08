@@ -98,12 +98,14 @@ class CryptoChart extends React.Component {
             'CryptoTrendingCharts__chart-price-down': !usdIncrease,
           })}
         >
-          (<FormattedNumber
+          (
+          <FormattedNumber
             style="percent" // eslint-disable-line react/style-prop-object
             value={usdPriceDifferencePercent}
             minimumFractionDigits={2}
             maximumFractionDigits={2}
-          />)
+          />
+          )
         </span>
         <i
           className={classNames('iconfont CryptoTrendingCharts__chart-caret', {
@@ -142,12 +144,14 @@ class CryptoChart extends React.Component {
             'CryptoTrendingCharts__chart-price-down': !btcIncrease,
           })}
         >
-          (<FormattedNumber
+          (
+          <FormattedNumber
             style="percent" // eslint-disable-line react/style-prop-object
             value={btcPriceDifferencePercent}
             minimumFractionDigits={2}
             maximumFractionDigits={2}
-          />)
+          />
+          )
         </span>
         <i
           className={classNames('iconfont CryptoTrendingCharts__chart-caret', {

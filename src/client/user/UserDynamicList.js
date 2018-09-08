@@ -58,7 +58,9 @@ export default class UserDynamicList extends React.Component {
           loader={<Loading />}
           loadMore={this.handleLoadMore}
         >
-          {users.map(user => <UserCard key={user} username={user} />)}
+          {users.map(user => (
+            <UserCard key={user} username={user} />
+          ))}
         </ReduxInfiniteScroll>
         {empty && (
           <div className="UserDynamicList__empty">

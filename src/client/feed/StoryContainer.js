@@ -63,12 +63,15 @@ const mapStateToProps = (state, { id }) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  votePost,
-  toggleBookmark,
-  editPost,
-  reblog,
-  followUser,
-  unfollowUser,
-  push,
-})(Story);
+export default connect(
+  mapStateToProps,
+  {
+    votePost,
+    toggleBookmark,
+    editPost,
+    reblog,
+    followUser,
+    unfollowUser,
+    push,
+  },
+)(Story);

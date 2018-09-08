@@ -41,7 +41,9 @@ const LastDrafts = ({ drafts, loaded }) => {
         {empty && (
           <FormattedMessage id="drafts_empty" defaultMessage="You don't have any draft saved" />
         )}
-        {drafts.map(draft => <Draft key={draft.id} draft={draft} />)}
+        {drafts.map(draft => (
+          <Draft key={draft.id} draft={draft} />
+        ))}
         {!empty && (
           <h4 className="LastDrafts__more">
             <Link to={'/drafts'}>

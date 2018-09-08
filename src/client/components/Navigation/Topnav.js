@@ -75,6 +75,7 @@ class Topnav extends React.Component {
       searchBarActive: false,
       popoverVisible: false,
       searchBarValue: '',
+      isMobileMenu: false,
       // notificationsPopoverVisible: false,
     };
     this.handleMoreMenuSelect = this.handleMoreMenuSelect.bind(this);
@@ -113,12 +114,14 @@ class Topnav extends React.Component {
       notificationsPopoverVisible: false,
     });
   }
-
+  toggleMobileMenu = () => {
+    this.setState({ isMobileMenu: !this.state.isMobileMenu });
+  };
   menuForLoggedOut = () => {
     const { location } = this.props;
     const { searchBarActive } = this.state;
     const next = location.pathname.length > 1 ? location.pathname : '';
-
+    const mobileBar = '/images/menu.svg';
     return (
       <div
         className={classNames('Topnav__menu-container Topnav__menu-logged-out', {
@@ -128,7 +131,7 @@ class Topnav extends React.Component {
         <Menu className="Topnav__menu-container__menu" mode="horizontal">
           <Menu.Item key="signup">
             <a target="_blank" rel="noopener noreferrer" href={process.env.SIGNUP_URL}>
-              <FormattedMessage id="signup" defaultMessage="Sign up" />
+              <FormattedMessage id="signup" defaultMessage="Iscriviti" />
             </a>
           </Menu.Item>
           <Menu.Item key="divider" disabled>
@@ -136,11 +139,20 @@ class Topnav extends React.Component {
           </Menu.Item>
           <Menu.Item key="login">
             <a href={SteemConnect.getLoginURL(next)}>
-              <FormattedMessage id="login" defaultMessage="Log in" />
+              <FormattedMessage id="login" defaultMessage="Accedi" />
             </a>
           </Menu.Item>
           <Menu.Item key="language">
             <LanguageSettings />
+          </Menu.Item>
+          <Menu.Item
+            key="mobile_bar"
+            className="mobile_bar_menu"
+            onClick={() => {
+              this.toggleMobileMenu();
+            }}
+          >
+            <img src={mobileBar} alt="menu bar" />
           </Menu.Item>
         </Menu>
       </div>
@@ -151,6 +163,7 @@ class Topnav extends React.Component {
     // const { intl, username, notifications, userSCMetaData, loadingNotifications } = this.props;
     const { intl, username } = this.props;
     const { searchBarActive, popoverVisible } = this.state;
+    const mobileBar = '/images/menu.svg';
     // const { searchBarActive, notificationsPopoverVisible, popoverVisible } = this.state;
     // const lastSeenTimestamp = _.get(userSCMetaData, 'notifications_last_timestamp');
     // const notificationsCount = _.isUndefined(lastSeenTimestamp)
@@ -275,6 +288,15 @@ class Topnav extends React.Component {
               </a>
             </Popover>
           </Menu.Item>
+          <Menu.Item
+            key="mobile_bar"
+            className="mobile_bar_menu"
+            onClick={() => {
+              this.toggleMobileMenu();
+            }}
+          >
+            <img src={mobileBar} alt="menu bar" />
+          </Menu.Item>
         </Menu>
       </div>
     );
@@ -323,7 +345,7 @@ class Topnav extends React.Component {
 
   render() {
     const { intl, autoCompleteSearchResults } = this.props;
-    const { searchBarActive, searchBarValue } = this.state;
+    const { searchBarActive, searchBarValue, isMobileMenu } = this.state;
     const logo = '/images/Steem_Italia_logo.svg';
 
     const dropdownOptions = _.map(autoCompleteSearchResults, option => (
@@ -366,7 +388,7 @@ class Topnav extends React.Component {
           </div>
           <div className={classNames('flex-1', { mobileVisible: searchBarActive })}>
             <div className="Topnav__input-container">
-              <ul>
+              <ul className={isMobileMenu ? 'show' : ''}>
                 <li>
                   <Link className="nav-menu" to="/created/spi-postit">
                     {' '}

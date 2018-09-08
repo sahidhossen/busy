@@ -7,10 +7,13 @@ import { deleteDraft } from './editorActions';
 import { notify } from '../../app/Notification/notificationActions';
 
 @injectIntl
-@connect(null, {
-  notify,
-  deleteDraft,
-})
+@connect(
+  null,
+  {
+    notify,
+    deleteDraft,
+  },
+)
 class DeleteDraftModal extends React.Component {
   static propTypes = {
     intl: PropTypes.shape().isRequired,

@@ -9,3 +9,5 @@ assets/
 public/
 build/*
 scripts/*
+/src/client/about/*
+/src/client/faq/*

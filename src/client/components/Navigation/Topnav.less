@@ -73,6 +73,24 @@
       }
       @media @medium-max {
         display: none;
+        transition: all 0.2s linear 0s;
+        &.show {
+          display: block;
+          position: fixed;
+          top: 63px;
+          height: auto;
+          background: rgb(242, 242, 242);
+          width: 100%;
+          right: 0;
+          padding-top: 20px;
+          padding-bottom: 25px;
+          li {
+            display: block;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            text-align: center;
+          }
+        }
       }
     }
     > .ant-select-show-search {
@@ -159,6 +177,16 @@
           }
           @media @medium-max {
             font-size: 12px;
+          }
+        }
+        &.mobile_bar_menu {
+          display: none;
+          & > img {
+            width: 20px;
+            margin-top: -4px;
+          }
+          @media @medium-max {
+            display: block;
           }
         }
       }
