@@ -407,14 +407,6 @@ class Topnav extends React.Component {
                     PROGETTI{' '}
                   </Link>{' '}
                 </li>
-                {this.props.username && (
-                  <li>
-                    <Link className="nav-menu" to={`/@${this.props.username}/feed`}>
-                      {' '}
-                      SEGUITI{' '}
-                    </Link>{' '}
-                  </li>
-                )}
                 <li>
                   <Link className="nav-menu" to="/regole">
                     {' '}
