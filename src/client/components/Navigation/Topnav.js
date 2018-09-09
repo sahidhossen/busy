@@ -390,7 +390,7 @@ class Topnav extends React.Component {
             <div className="Topnav__input-container">
               <ul className={isMobileMenu ? 'show' : ''}>
                 <li>
-                  <Link className="nav-menu" to="/created/spi-postit">
+                  <Link className="nav-menu" to="/@spi-postit">
                     {' '}
                     POSTIT{' '}
                   </Link>{' '}
@@ -416,9 +416,9 @@ class Topnav extends React.Component {
                   </li>
                 )}
                 <li>
-                  <Link className="nav-menu" to="/faq">
+                  <Link className="nav-menu" to="/regole">
                     {' '}
-                    FAQ{' '}
+                    REGOLE{' '}
                   </Link>{' '}
                 </li>
                 <li>

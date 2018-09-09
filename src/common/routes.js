@@ -146,7 +146,7 @@ const routes = [
         component: ExitPage,
       },
       {
-        path: '/faq',
+        path: '/regole',
         component: Faq,
       },
       {

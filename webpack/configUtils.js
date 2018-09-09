@@ -29,8 +29,7 @@ const DEFINE_PLUGIN = new webpack.DefinePlugin({
     process.env.STEEMCONNECT_CLIENT_ID || 'steem-italia',
   ),
   'process.env.STEEMCONNECT_REDIRECT_URL': JSON.stringify(
-    process.env.STEEMCONNECT_REDIRECT_URL ||
-      'http://ec2-18-218-8-217.us-east-2.compute.amazonaws.com/callback',
+    process.env.STEEMCONNECT_REDIRECT_URL || 'http://test-steemitalia.tk/callback',
   ),
   'process.env.STEEMCONNECT_HOST': JSON.stringify(
     process.env.STEEMCONNECT_HOST || 'https://steemconnect.com',
